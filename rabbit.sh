@@ -159,7 +159,7 @@ rm -rf /root/Rabbit > /dev/null
 cd /root && mkdir -p  Rabbit && cd Rabbit
 cd /root/Rabbit && mkdir -p  Config
 cd /root/Rabbit
-wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/shidahuilang/QL-/main/Config.json
+wget -O Config.json   https://ghfast.top/https://raw.githubusercontent.com/shidahuilang/QL-/main/Config.json
 read -p "请输入青龙服务器在web页面中显示的名称: " QLName && printf "\n"
 read -p "请输入Rabbit面板标题: " Title && printf "\n"
 read -p "请输入青龙QL_CLIENTID: " CLIENTID && printf "\n"

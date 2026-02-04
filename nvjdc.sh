@@ -157,7 +157,7 @@ elif [[ "$(. /etc/os-release && echo "$ID")" == "debian" ]]; then
    apt install git -y > /dev/null
 fi
 rm -rf /root/nvjdc > /dev/null
-git clone https://ghproxy.com/https://github.com/shidahuilang/nvjdc.git /root/nvjdc
+git clone https://ghfast.top/https://github.com/shidahuilang/nvjdc.git /root/nvjdc
 if [ ! -d "/root/nvjdc/.local-chromium/Linux-884014" ]; then
 cd /root/nvjdc
 echo -e "${green}正在拉取chromium-browser-snapshots等依赖,体积100多M，请耐心等待下一步命令提示···${plain}"
@@ -167,7 +167,7 @@ unzip chrome-linux.zip > /dev/null 2>&1
 rm -f chrome-linux.zip > /dev/null 2>&1 
 fi
 mkdir /root/nvjdc/Config && cd /root/nvjdc/Config
-wget -O Config.json   https://ghproxy.com/https://raw.githubusercontent.com/shidahuilang/nvjdc/main/Config.json
+wget -O Config.json   https://ghfast.top/https://raw.githubusercontent.com/shidahuilang/nvjdc/main/Config.json
 read -p "请输入青龙服务器在web页面中显示的名称: " QLName && printf "\n"
 read -p "请输入nvjdc面板标题: " title && printf "\n"
 read -p "请输入nvjdc面板希望使用的端口号: " portinfo && printf "\n"
@@ -283,7 +283,7 @@ echo -e "${green}安装完毕,面板访问地址：http://${baseip}:${portinfo}$
 
 update_nvjdc(){
 mv /root/nvjdc /root/nvjdc1
-git clone https://ghproxy.com/https://github.com/shidahuilang/nvjdc.git /root/nvjdc
+git clone https://ghfast.top/https://github.com/shidahuilang/nvjdc.git /root/nvjdc
 cd /root/nvjdc &&  mkdir -p  Config &&  mv /root/nvjdc1/Config.json /root/nvjdc/Config/Config.json
 cd /root/nvjdc &&    mv /root/nvjdc1/.local-chromium /root/nvjdc/.local-chromium
 cd /root/nvjdc

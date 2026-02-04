@@ -4,7 +4,7 @@
 #	System Request:Ubuntu 18.04+/20.04+
 #	Author:	dahuilang
 #	Dscription: qinglong onekey Management
-#	github: https://github.com/shidahuilang
+#	github: https://github.com/aa123330
 #====================================================
 
 # 字体颜色配置
@@ -477,20 +477,20 @@ docker run --rm     -v /var/run/docker.sock:/var/run/docker.sock     containrrr/
 function Google_Check() {
   export Google_Check=$(curl -I -s --connect-timeout 8 google.com -w %{http_code} | tail -n1)
   if [ ! "$Google_Check" == 301 ];then
-    export curlurl="https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main"
+    export curlurl="https://cdn.jsdelivr.net/gh/aa123330/QL-@main"
     export GithubProxyUrl="https://ghfast.top/"
     ECHORR "访问谷歌失败，以下使用代理安装"
     sleep 2
     echo "
-    export curlurl="https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main"
+    export curlurl="https://cdn.jsdelivr.net/gh/aa123330/QL-@main"
     export GithubProxyUrl="https://ghfast.top/"
     " > ${Current}/ghproxy.sh
     sed -i "s/^[ \t]*//g" ${Current}/ghproxy.sh
   else
-    export curlurl="https://raw.githubusercontent.com/shidahuilang/QL-/main"
+    export curlurl="https://raw.githubusercontent.com/aa123330/QL-/main"
     export GithubProxyUrl=""
     echo "
-    export curlurl="https://raw.githubusercontent.com/shidahuilang/QL-/main"
+    export curlurl="https://raw.githubusercontent.com/aa123330/QL-/main"
     export GithubProxyUrl=""
     " > ${Current}/ghproxy.sh
     sed -i "s/^[ \t]*//g" ${Current}/ghproxy.sh
@@ -607,7 +607,7 @@ memunvjdc() {
     docker exec -it qinglong bash -c "ql resetlet"
     sleep 2
     docker exec -it qinglong bash -c "ql check"
-    bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main/timesync.sh)"
+    bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/aa123330/QL-@main/timesync.sh)"
     print_ok "命令执行完成"
   break
   ;;
@@ -696,7 +696,7 @@ memuqinglong() {
     docker exec -it qinglong bash -c "ql resetlet"
     sleep 2
     docker exec -it qinglong bash -c "ql check"
-    bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main/timesync.sh)"
+    bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/aa123330/QL-@main/timesync.sh)"
     print_ok "命令执行完成"
   break
   ;;

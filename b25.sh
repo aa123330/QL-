@@ -4,7 +4,7 @@
 #	System Request:Ubuntu 18.04+/20.04+
 #	Author:	dahuilang
 #	Dscription: qinglong onekey Management
-#	github: https://github.com/shidahuilang
+#	github: https://github.com/aa123330
 #====================================================
 
 # 字体颜色配置
@@ -513,7 +513,7 @@ cd /opt/Rabbit && mkdir -p  Config
 cd /opt/Rabbit
 cd /opt/Rabbit/Config && wget -O Config.json  https://raw.githubusercontent.com/ht944/MadRabbit/main/Config.json
   ECHOY "安装rabbit镜像中，安装需要时间，请耐心等候..."
-  docker pull shidahuilang/rabbit:latest
+  docker pull aa123330/rabbit:latest
   if [[ `docker images | grep -c "rabbit"` -ge '1' ]]; then
     print_ok "rabbit镜像安装 完成"
   else
@@ -528,18 +528,18 @@ function linux_rabbit() {
   ECHOY "启动镜像中，请稍后..."
   
   if [[ -f /etc/openwrt_release ]] && [[ -f /rom/etc/openwrt_release ]]; then
-    cd /opt/Rabbit && docker run --name rabbit -d  -v "$(pwd)"/Config:/usr/src/Project/Config --net host shidahuilang/rabbit:latest
+    cd /opt/Rabbit && docker run --name rabbit -d  -v "$(pwd)"/Config:/usr/src/Project/Config --net host aa123330/rabbit:latest
     #docker exec -it rabbit bash -c "cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime"
     #/etc/init.d/dockerman restart > /dev/null 2>&1
     #/etc/init.d/dockerd restart > /dev/null 2>&1
     sleep 3
  # elif [[ "$(. /etc/os-release && echo "$ID")" == "alpine" ]]; then
-    cd /root/Rabbit && docker run --name rabbit -d  -v "$(pwd)"/Config:/usr/src/Project/Config --net host shidahuilang/rabbit:latest
+    cd /root/Rabbit && docker run --name rabbit -d  -v "$(pwd)"/Config:/usr/src/Project/Config --net host aa123330/rabbit:latest
    # docker exec -it rabbit bash -c "cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime"
     sleep 2
  # else
     cd /root/Rabbit
-    cd /root/Rabbit && docker run --name rabbit -d  -v "$(pwd)"/Config:/usr/src/Project/Config --net host shidahuilang/rabbit:latest
+    cd /root/Rabbit && docker run --name rabbit -d  -v "$(pwd)"/Config:/usr/src/Project/Config --net host aa123330/rabbit:latest
     sleep 2
 fi
   cd ${Current}
@@ -594,21 +594,21 @@ rm -rf /root/Rabbit > /dev/null
   fi
   cd ${Current}
   ECHOG "更新镜像，请耐心等候..."
-  sudo docker pull shidahuilang/rabbit:2.24
+  sudo docker pull aa123330/rabbit:2.24
   ECHOY "启动镜像"
   if [[ -f /etc/openwrt_release ]] && [[ -f /rom/etc/openwrt_release ]]; then
-    docker run --name rabbit -d  -v --restart unless-stopped "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 shidahuilang/rabbit:2.24
+    docker run --name rabbit -d  -v --restart unless-stopped "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 aa123330/rabbit:2.24
     docker exec -it rabbit bash -c "cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime"
     /etc/init.d/dockerman restart > /dev/null 2>&1
     /etc/init.d/dockerd restart > /dev/null 2>&1
     sleep 3
   elif [[ "$(. /etc/os-release && echo "$ID")" == "alpine" ]]; then
-    docker run --name rabbit -d  -v --restart unless-stopped "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 shidahuilang/rabbit:2.24
+    docker run --name rabbit -d  -v --restart unless-stopped "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 aa123330/rabbit:2.24
     docker exec -it rabbit bash -c "cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime"
     sleep 2
   else
     cd  ${Home}
-    docker run --name rabbit -d  -v --restart unless-stopped "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 shidahuilang/rabbit:2.24
+    docker run --name rabbit -d  -v --restart unless-stopped "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 aa123330/rabbit:2.24
   fi
   cd ${Current}
   if [[ `docker ps -a | grep -c "rabbit"` -ge '1' ]]; then
@@ -644,20 +644,20 @@ function OpenApi_Client() {
 function Google_Check() {
   export Google_Check=$(curl -I -s --connect-timeout 8 google.com -w %{http_code} | tail -n1)
   if [ ! "$Google_Check" == 301 ];then
-    export curlurl="https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main"
+    export curlurl="https://cdn.jsdelivr.net/gh/aa123330/QL-@main"
     export GithubProxyUrl="https://ghfast.top/"
     ECHORR "访问谷歌失败，以下使用代理安装"
     sleep 2
     echo "
-    export curlurl="https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main"
+    export curlurl="https://cdn.jsdelivr.net/gh/aa123330/QL-@main"
     export GithubProxyUrl="https://ghfast.top/"
     " > ${Current}/ghproxy.sh
     sed -i "s/^[ \t]*//g" ${Current}/ghproxy.sh
   else
-    export curlurl="https://raw.githubusercontent.com/shidahuilang/QL-/main"
+    export curlurl="https://raw.githubusercontent.com/aa123330/QL-/main"
     export GithubProxyUrl=""
     echo "
-    export curlurl="https://raw.githubusercontent.com/shidahuilang/QL-/main"
+    export curlurl="https://raw.githubusercontent.com/aa123330/QL-/main"
     export GithubProxyUrl=""
     " > ${Current}/ghproxy.sh
     sed -i "s/^[ \t]*//g" ${Current}/ghproxy.sh
@@ -780,7 +780,7 @@ memurabbit() {
     docker exec -it qinglong bash -c "ql resetlet"
     sleep 2
     docker exec -it qinglong bash -c "ql check"
-    bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main/timesync.sh)"
+    bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/aa123330/QL-@main/timesync.sh)"
     print_ok "命令执行完成"
   break
   ;;
@@ -869,7 +869,7 @@ memuqinglong() {
     docker exec -it qinglong bash -c "ql resetlet"
     sleep 2
     docker exec -it qinglong bash -c "ql check"
-    bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main/timesync.sh)"
+    bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/aa123330/QL-@main/timesync.sh)"
     print_ok "命令执行完成"
   break
   ;;

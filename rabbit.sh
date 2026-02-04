@@ -159,7 +159,7 @@ rm -rf /root/Rabbit > /dev/null
 cd /root && mkdir -p  Rabbit && cd Rabbit
 cd /root/Rabbit && mkdir -p  Config
 cd /root/Rabbit
-wget -O Config.json   https://ghfast.top/https://raw.githubusercontent.com/shidahuilang/QL-/main/Config.json
+wget -O Config.json   https://ghfast.top/https://raw.githubusercontent.com/aa123330/QL-/main/Config.json
 read -p "请输入青龙服务器在web页面中显示的名称: " QLName && printf "\n"
 read -p "请输入Rabbit面板标题: " Title && printf "\n"
 read -p "请输入青龙QL_CLIENTID: " CLIENTID && printf "\n"
@@ -202,26 +202,26 @@ EOF
 #拉取Rabbit镜像
 echo -e  "${green}开始拉取rabbit镜像文件，rabbit镜像比较大，请耐心等待${plain}"
 #docker pull ht944/rabbit:latest
-docker pull shidahuilang/rabbit:2.24
+docker pull aa123330/rabbit:2.24
 
 
 #创建并启动rabbit容器
 #cd /root/rabbit
 echo -e "${green}开始创建rabbit容器${plain}"
 #cd /root/Rabbit && docker run --name rabbit -d  -v "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 ht944/rabbit:latest
-cd /root/Rabbit && docker run --name rabbit -d -v "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 shidahuilang/rabbit:2.24
+cd /root/Rabbit && docker run --name rabbit -d -v "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 aa123330/rabbit:2.24
 baseip=$(curl -s ipip.ooo)  > /dev/null
 
 echo -e "${green}安装完毕,面板访问地址：http://${baseip}:5701"
 }
 
 update_rabbit(){
-docker pull shidahuilang/rabbit:2.24 && cd /root/Rabbit && docker run --name rabbit -d  -v "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 shidahuilang/rabbit:2.24
+docker pull aa123330/rabbit:2.24 && cd /root/Rabbit && docker run --name rabbit -d  -v "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 aa123330/rabbit:2.24
 baseip=$(curl -s ipip.ooo)  > /dev/null
 docker rm -f rabbit
-docker pull shidahuilang/rabbit:2.24
+docker pull aa123330/rabbit:2.24
 #docker run --name rabbit -d  -v --restart unless-stopped "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 ht944/rabbit:latest
-docker run --name rabbit -d  -v --restart unless-stopped "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 shidahuilang/rabbit:2.24
+docker run --name rabbit -d  -v --restart unless-stopped "$(pwd)"/Config:/usr/src/Project/Config -p 5701:1234 aa123330/rabbit:2.24
 docker update --restart=always rabbit
 echo -e "${green}rabbit更新完毕，脚本自动退出。${plain}"
 exit 0

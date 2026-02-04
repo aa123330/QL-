@@ -525,12 +525,12 @@ function Google_Check() {
   export Google_Check=$(curl -I -s --connect-timeout 8 google.com -w %{http_code} | tail -n1)
   if [ ! "$Google_Check" == 301 ];then
     export curlurl="https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main"
-    export GithubProxyUrl="https://ghproxy.com/"
+    export GithubProxyUrl="https://ghfast.top/"
     ECHORR "访问谷歌失败，以下使用代理安装"
     sleep 2
     echo "
     export curlurl="https://cdn.jsdelivr.net/gh/shidahuilang/QL-@main"
-    export GithubProxyUrl="https://ghproxy.com/"
+    export GithubProxyUrl="https://ghfast.top/"
     " > ${Current}/ghproxy.sh
     sed -i "s/^[ \t]*//g" ${Current}/ghproxy.sh
   else
